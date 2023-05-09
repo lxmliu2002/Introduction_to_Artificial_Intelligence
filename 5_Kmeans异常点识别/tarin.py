@@ -127,7 +127,7 @@ sns.heatmap(df1.corr(),cmap='coolwarm',annot=True);
 from sklearn.decomposition import PCA
 
 #在进行特征变换之前先对各个特征进行标准化
-columns = ['cpc', 'cpm', 'cpc X cpm', 'cpc / cpm']
+columns = ['cpc', 'cpm', 'cpc X cpm', 'cpc / cpm','daylight']
 data = df[columns]
 scaler = StandardScaler()
 data = scaler.fit_transform(data)
@@ -285,6 +285,9 @@ def get_distance(data, kmeans, n_features):
         distance.append(np.linalg.norm(point - center))
     distance = pd.Series(distance)
     return distance
+
+kmeans = KMeans(n_clusters=2,init='k-means++',n_init=10,max_iter=100)
+kmeans.fit(data)
 
 from copy import deepcopy
 ratio = 0.01

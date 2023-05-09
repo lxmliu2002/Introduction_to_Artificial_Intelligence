@@ -17,7 +17,7 @@ class KMeans():
     """
     def __init__(
                 self,
-                n_clusters=8,
+                n_clusters=2,
                 n_init=10,
                 max_iter=300
                 ):
@@ -100,8 +100,7 @@ def preprocess_data(df):
 
     # 将array类型的data变为DataFrame类型，返回DataFrame类型数据
     n_components = data.shape[1]
-    data = pd.DataFrame(data,columns=['Dimension' + str(i+1) for i in range(n_components)])
-
+    data = pd.DataFrame(data,columns=['Dimension' + str(i+1) for i in range(3)])
     return data
 def get_distance(data, kmeans, n_features):
     """
